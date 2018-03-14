@@ -6,7 +6,7 @@
         "version": "2.0"
     }, 
     "host": "biologeek.orange-labs.fr", 
-    "basePath": "/tmf-api/serviceQualityManagement", 
+    "basePath": "/tmf-api/serviceQualityManagement/v2/", 
     "schemes": [
         "https"
     ], 
@@ -33,157 +33,216 @@
                         "description": "Comma separated properties to display in response"
                     }, 
                     {
-                        "type": "string", 
+                        "type": "integer", 
                         "required": false, 
                         "in": "query", 
-                        "name": "@baseType", 
-                        "description": "For filtering: "
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "@schemaLocation", 
-                        "description": "For filtering: "
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "@type", 
-                        "description": "For filtering: "
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "conformanceComparator", 
-                        "description": "For filtering: An operator that specifies whether a Service Level Objective is \nviolated above or below the conformanceTarget."
-                    }, 
-                    {
-                        "name": "conformancePeriod.endDateTime", 
-                        "format": "date-time", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "string", 
-                        "description": "For filtering: An instant of time, ending at the TimePeriod."
-                    }, 
-                    {
-                        "name": "conformancePeriod.startDateTime", 
-                        "format": "date-time", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "string", 
-                        "description": "For filtering: An instant of time, starting at the TimePeriod"
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "conformanceTarget", 
-                        "description": "For filtering: A value used to determine if Service Level Objective is met. \nThe data type should be adjusted case by case."
+                        "name": "offset", 
+                        "description": "Requested index for start of resources to be provided in response"
                     }, 
                     {
                         "type": "integer", 
                         "required": false, 
                         "in": "query", 
+                        "name": "limit", 
+                        "description": "Requested number of resources to be provided in response"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "conformanceComparator", 
+                        "description": "For filtering on the base of 'conformanceComparator' field (equality)"
+                    }, 
+                    {
+                        "format": "date-time", 
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "conformancePeriod.endDateTime", 
+                        "description": "For filtering on the base of 'endDateTime' field (equality)"
+                    }, 
+                    {
+                        "name": "conformancePeriod.endDateTime.gt", 
+                        "description": "For filtering on the base of 'endDateTime' field (great than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "conformancePeriod.endDateTime.lt", 
+                        "description": "For filtering on the base of 'endDateTime' field (less than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "format": "date-time", 
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "conformancePeriod.startDateTime", 
+                        "description": "For filtering on the base of 'startDateTime' field (equality)"
+                    }, 
+                    {
+                        "name": "conformancePeriod.startDateTime.gt", 
+                        "description": "For filtering on the base of 'startDateTime' field (great than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "conformancePeriod.startDateTime.lt", 
+                        "description": "For filtering on the base of 'startDateTime' field (less than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "conformanceTarget", 
+                        "description": "For filtering on the base of 'conformanceTarget' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
                         "name": "graceTimes", 
-                        "description": "For filtering: The number of times an objective can remain un-updated without \na violation of a Service Level Agreement in reference to a measurement period and/or Service Level Agreement reporting period."
+                        "description": "For filtering on the base of 'graceTimes' field (equality)"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
                         "in": "query", 
+                        "type": "string", 
                         "name": "name", 
-                        "description": "For filtering: The name of the service level objectives."
+                        "description": "For filtering on the base of 'name' field (equality)"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
                         "in": "query", 
+                        "type": "string", 
                         "name": "thresholdTarget", 
-                        "description": "For filtering: A value that used to specify when a warning should be used \nthat indicates an objective is danger of not being met. Notice, the data type should be adjusted case by case."
+                        "description": "For filtering on the base of 'thresholdTarget' field (equality)"
                     }, 
                     {
+                        "format": "date-time", 
+                        "in": "query", 
+                        "type": "string", 
                         "name": "tolerancePeriod.endDateTime", 
-                        "format": "date-time", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "string", 
-                        "description": "For filtering: An instant of time, ending at the TimePeriod."
+                        "description": "For filtering on the base of 'endDateTime' field (equality)"
                     }, 
                     {
+                        "name": "tolerancePeriod.endDateTime.gt", 
+                        "description": "For filtering on the base of 'endDateTime' field (great than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "tolerancePeriod.endDateTime.lt", 
+                        "description": "For filtering on the base of 'endDateTime' field (less than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "format": "date-time", 
+                        "in": "query", 
+                        "type": "string", 
                         "name": "tolerancePeriod.startDateTime", 
-                        "format": "date-time", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "string", 
-                        "description": "For filtering: An instant of time, starting at the TimePeriod"
+                        "description": "For filtering on the base of 'startDateTime' field (equality)"
                     }, 
                     {
+                        "name": "tolerancePeriod.startDateTime.gt", 
+                        "description": "For filtering on the base of 'startDateTime' field (great than)", 
                         "type": "string", 
-                        "required": false, 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "tolerancePeriod.startDateTime.lt", 
+                        "description": "For filtering on the base of 'startDateTime' field (less than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
                         "in": "query", 
+                        "type": "string", 
                         "name": "toleranceTarget", 
-                        "description": "For filtering: A value that specifies the allowable variation of a conformance \nTarget. The data type should be adjusted case by case."
+                        "description": "For filtering on the base of 'toleranceTarget' field (equality)"
                     }, 
                     {
+                        "format": "date-time", 
+                        "in": "query", 
+                        "type": "string", 
                         "name": "validFor.endDateTime", 
-                        "format": "date-time", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "string", 
-                        "description": "For filtering: An instant of time, ending at the TimePeriod."
+                        "description": "For filtering on the base of 'endDateTime' field (equality)"
                     }, 
                     {
+                        "name": "validFor.endDateTime.gt", 
+                        "description": "For filtering on the base of 'endDateTime' field (great than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "validFor.endDateTime.lt", 
+                        "description": "For filtering on the base of 'endDateTime' field (less than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "format": "date-time", 
+                        "in": "query", 
+                        "type": "string", 
                         "name": "validFor.startDateTime", 
+                        "description": "For filtering on the base of 'startDateTime' field (equality)"
+                    }, 
+                    {
+                        "name": "validFor.startDateTime.gt", 
+                        "description": "For filtering on the base of 'startDateTime' field (great than)", 
+                        "type": "string", 
                         "format": "date-time", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "string", 
-                        "description": "For filtering: An instant of time, starting at the TimePeriod"
+                        "in": "query"
                     }, 
                     {
+                        "name": "validFor.startDateTime.lt", 
+                        "description": "For filtering on the base of 'startDateTime' field (less than)", 
                         "type": "string", 
-                        "required": false, 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
                         "in": "query", 
+                        "type": "string", 
                         "name": "serviceLevelSpecParameter.name", 
-                        "description": "For filtering: The name of parameter."
+                        "description": "For filtering on the base of 'name' field (equality)"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
                         "in": "query", 
+                        "type": "string", 
                         "name": "serviceLevelSpecParameter.serviceParmCategory", 
-                        "description": "For filtering: A string that specifies whether the Service Level Specification Parameter is technology specific, service specific, or technology/service independent"
+                        "description": "For filtering on the base of 'serviceParmCategory' field (equality)"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
                         "in": "query", 
+                        "type": "string", 
                         "name": "serviceLevelSpecParameter.serviceParmPerspective", 
-                        "description": "For filtering: A string that specifies whether the Service Level Specification \nParameter represents a single user instance parameter or a parameter that represents an aggregation."
+                        "description": "For filtering on the base of 'serviceParmPerspective' field (equality)"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
                         "in": "query", 
+                        "type": "string", 
                         "name": "serviceLevelSpecParameter.transformationAlgorithmOfKQI", 
-                        "description": "For filtering: The description of a logical step-by-step procedure used to \ncalculate the value of a KQI."
+                        "description": "For filtering on the base of 'transformationAlgorithmOfKQI' field (equality)"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
                         "in": "query", 
+                        "type": "string", 
                         "name": "serviceLevelSpecParameter.type", 
-                        "description": "For filtering: Types of Service Level Specification parameters are KQI or KPI."
+                        "description": "For filtering on the base of 'type' field (equality)"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
                         "in": "query", 
+                        "type": "string", 
                         "name": "serviceLevelSpecConsequence.prescribedAction", 
-                        "description": "For filtering: Recommended remedy for a violated Service Level Objective. \nThis could be a hyperlink to the recommended action."
+                        "description": "For filtering on the base of 'prescribedAction' field (equality)"
                     }
                 ], 
                 "responses": {
@@ -402,62 +461,66 @@
                         "description": "Comma separated properties to display in response"
                     }, 
                     {
-                        "type": "string", 
+                        "type": "integer", 
                         "required": false, 
                         "in": "query", 
-                        "name": "@baseType", 
-                        "description": "For filtering: "
+                        "name": "offset", 
+                        "description": "Requested index for start of resources to be provided in response"
                     }, 
                     {
-                        "type": "string", 
+                        "type": "integer", 
                         "required": false, 
                         "in": "query", 
-                        "name": "@schemaLocation", 
-                        "description": "For filtering: "
+                        "name": "limit", 
+                        "description": "Requested number of resources to be provided in response"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
                         "in": "query", 
-                        "name": "@type", 
-                        "description": "For filtering: "
-                    }, 
-                    {
                         "type": "string", 
-                        "required": false, 
-                        "in": "query", 
                         "name": "name", 
-                        "description": "For filtering: The name of Service Level Specification"
+                        "description": "For filtering on the base of 'name' field (equality)"
                     }, 
                     {
+                        "format": "date-time", 
+                        "in": "query", 
+                        "type": "string", 
                         "name": "validFor.endDateTime", 
-                        "format": "date-time", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "string", 
-                        "description": "For filtering: An instant of time, ending at the TimePeriod."
+                        "description": "For filtering on the base of 'endDateTime' field (equality)"
                     }, 
                     {
+                        "name": "validFor.endDateTime.gt", 
+                        "description": "For filtering on the base of 'endDateTime' field (great than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "validFor.endDateTime.lt", 
+                        "description": "For filtering on the base of 'endDateTime' field (less than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "format": "date-time", 
+                        "in": "query", 
+                        "type": "string", 
                         "name": "validFor.startDateTime", 
+                        "description": "For filtering on the base of 'startDateTime' field (equality)"
+                    }, 
+                    {
+                        "name": "validFor.startDateTime.gt", 
+                        "description": "For filtering on the base of 'startDateTime' field (great than)", 
+                        "type": "string", 
                         "format": "date-time", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "string", 
-                        "description": "For filtering: An instant of time, starting at the TimePeriod"
+                        "in": "query"
                     }, 
                     {
+                        "name": "validFor.startDateTime.lt", 
+                        "description": "For filtering on the base of 'startDateTime' field (less than)", 
                         "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "relatedServiceLevelObjective.@referredType", 
-                        "description": "For filtering: "
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "relatedServiceLevelObjective.@schemaLocation", 
-                        "description": "For filtering: "
+                        "format": "date-time", 
+                        "in": "query"
                     }
                 ], 
                 "responses": {
@@ -742,16 +805,10 @@
         "ServiceLevelObjective": {
             "type": "object", 
             "description": "Service level objectives are defined in terms of parameters and metrics, thresholds, and tolerances \nassociated with the parameters.", 
+            "required": [
+                "name"
+            ], 
             "properties": {
-                "@baseType": {
-                    "type": "string"
-                }, 
-                "@schemaLocation": {
-                    "type": "string"
-                }, 
-                "@type": {
-                    "type": "string"
-                }, 
                 "conformanceComparator": {
                     "type": "string", 
                     "description": "An operator that specifies whether a Service Level Objective is \nviolated above or below the conformanceTarget."
@@ -765,7 +822,7 @@
                     "description": "A value used to determine if Service Level Objective is met. \nThe data type should be adjusted case by case."
                 }, 
                 "graceTimes": {
-                    "type": "integer", 
+                    "type": "string", 
                     "description": "The number of times an objective can remain un-updated without \na violation of a Service Level Agreement in reference to a measurement period and/or Service Level Agreement reporting period."
                 }, 
                 "href": {
@@ -803,6 +860,18 @@
                     "items": {
                         "$ref": "#/definitions/ServiceLevelSpecConsequence"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "The base type for use in polymorphic collections"
                 }
             }
         }, 
@@ -815,15 +884,6 @@
                 "serviceLevelSpecParameter"
             ], 
             "properties": {
-                "@baseType": {
-                    "type": "string"
-                }, 
-                "@schemaLocation": {
-                    "type": "string"
-                }, 
-                "@type": {
-                    "type": "string"
-                }, 
                 "conformanceComparator": {
                     "type": "string", 
                     "description": "An operator that specifies whether a Service Level Objective is \nviolated above or below the conformanceTarget."
@@ -837,7 +897,7 @@
                     "description": "A value used to determine if Service Level Objective is met. \nThe data type should be adjusted case by case."
                 }, 
                 "graceTimes": {
-                    "type": "integer", 
+                    "type": "string", 
                     "description": "The number of times an objective can remain un-updated without \na violation of a Service Level Agreement in reference to a measurement period and/or Service Level Agreement reporting period."
                 }, 
                 "name": {
@@ -867,6 +927,18 @@
                     "items": {
                         "$ref": "#/definitions/ServiceLevelSpecConsequence"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "The base type for use in polymorphic collections"
                 }
             }
         }, 
@@ -874,15 +946,6 @@
             "type": "object", 
             "description": "Service level objectives are defined in terms of parameters and metrics, thresholds, and tolerances \nassociated with the parameters.\nSkipped properties: id,href,id,href,validFor", 
             "properties": {
-                "@baseType": {
-                    "type": "string"
-                }, 
-                "@schemaLocation": {
-                    "type": "string"
-                }, 
-                "@type": {
-                    "type": "string"
-                }, 
                 "conformanceComparator": {
                     "type": "string", 
                     "description": "An operator that specifies whether a Service Level Objective is \nviolated above or below the conformanceTarget."
@@ -896,7 +959,7 @@
                     "description": "A value used to determine if Service Level Objective is met. \nThe data type should be adjusted case by case."
                 }, 
                 "graceTimes": {
-                    "type": "integer", 
+                    "type": "string", 
                     "description": "The number of times an objective can remain un-updated without \na violation of a Service Level Agreement in reference to a measurement period and/or Service Level Agreement reporting period."
                 }, 
                 "name": {
@@ -922,6 +985,18 @@
                     "items": {
                         "$ref": "#/definitions/ServiceLevelSpecConsequence"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "The base type for use in polymorphic collections"
                 }
             }
         }, 
@@ -929,15 +1004,6 @@
             "type": "object", 
             "description": "A Service Level Specification represents a pre-defined or negotiated set of Service Level \nObjectives. In addition, certain consequences are associated with not meeting the Service Level \nObjectives. Service Level Agreements are expressed in terms of Service Level Specifications.", 
             "properties": {
-                "@baseType": {
-                    "type": "string"
-                }, 
-                "@schemaLocation": {
-                    "type": "string"
-                }, 
-                "@type": {
-                    "type": "string"
-                }, 
                 "description": {
                     "type": "string", 
                     "description": "A brief introduction of a service level specification."
@@ -963,6 +1029,18 @@
                     "items": {
                         "$ref": "#/definitions/RelatedServiceLevelObjectiveRef"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "The base type for use in polymorphic collections"
                 }
             }
         }, 
@@ -974,15 +1052,6 @@
                 "relatedServiceLevelObjective"
             ], 
             "properties": {
-                "@baseType": {
-                    "type": "string"
-                }, 
-                "@schemaLocation": {
-                    "type": "string"
-                }, 
-                "@type": {
-                    "type": "string"
-                }, 
                 "description": {
                     "type": "string", 
                     "description": "A brief introduction of a service level specification."
@@ -1000,6 +1069,18 @@
                     "items": {
                         "$ref": "#/definitions/RelatedServiceLevelObjectiveRef"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "The base type for use in polymorphic collections"
                 }
             }
         }, 
@@ -1007,15 +1088,6 @@
             "type": "object", 
             "description": "A Service Level Specification represents a pre-defined or negotiated set of Service Level \nObjectives. In addition, certain consequences are associated with not meeting the Service Level \nObjectives. Service Level Agreements are expressed in terms of Service Level Specifications.\nSkipped properties: id,href,id,href,validFor", 
             "properties": {
-                "@baseType": {
-                    "type": "string"
-                }, 
-                "@schemaLocation": {
-                    "type": "string"
-                }, 
-                "@type": {
-                    "type": "string"
-                }, 
                 "description": {
                     "type": "string", 
                     "description": "A brief introduction of a service level specification."
@@ -1029,6 +1101,18 @@
                     "items": {
                         "$ref": "#/definitions/RelatedServiceLevelObjectiveRef"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "The base type for use in polymorphic collections"
                 }
             }
         }, 
@@ -1052,10 +1136,10 @@
             "type": "object", 
             "description": "Service Level Specification parameters can be one of two types. A Key Quality Indicator (KQI) \nprovides a measurement of a specific aspect of the performance of a Product (i.e., Product \nSpecification, Product Offering, or Product) or a Service (i.e., Service Specification or Service).", 
             "required": [
-                "name",
-				"relatedEntity"
-            ],
-			"properties": {
+                "name", 
+                "relatedEntity"
+            ], 
+            "properties": {
                 "name": {
                     "type": "string", 
                     "description": "The name of parameter."
@@ -1085,6 +1169,10 @@
                     "items": {
                         "$ref": "#/definitions/RelatedEntityRef"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
                 }
             }
         }, 
@@ -1099,23 +1187,17 @@
                 "validFor": {
                     "$ref": "#/definitions/TimePeriod", 
                     "description": "A valid duration of a thing."
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
                 }
             }
         }, 
         "RelatedEntityRef": {
             "type": "object", 
             "description": "The related entity source of a KQI or KPI. A KQI draws its data from a number of sources, \nincluding Key Performance Indicators (KPIs).  A KPI provides a measurement of a specific aspect \nof the performance of a Service (whether it is a network- or a non-network-based Service) or a \ngroup of Services of the same type.", 
-            "required": [
-                "id",
-				"href"
-            ],
-			"properties": {
-                "@referredType": {
-                    "type": "string"
-                }, 
-                "@schemaLocation": {
-                    "type": "string"
-                }, 
+            "properties": {
                 "herf": {
                     "type": "string", 
                     "description": "The hyperlink to access an entity."
@@ -1127,6 +1209,10 @@
                 "name": {
                     "type": "string", 
                     "description": "The name of an entity."
+                }, 
+                "@referredType": {
+                    "type": "string", 
+                    "description": "The actual type of the target instance when needed for disambiguation."
                 }
             }
         }, 
@@ -1134,16 +1220,10 @@
             "type": "object", 
             "description": "A set of Service Level Objectives that are contained in the Service Level Specification.", 
             "required": [
-                "id",
-				"href"
-            ],
-			"properties": {
-                "@referredType": {
-                    "type": "string"
-                }, 
-                "@schemaLocation": {
-                    "type": "string"
-                }, 
+                "id", 
+                "href"
+            ], 
+            "properties": {
                 "href": {
                     "type": "string", 
                     "description": "The hyperlink to access a service level object."
@@ -1151,6 +1231,10 @@
                 "id": {
                     "type": "string", 
                     "description": "The identifier of a service level object."
+                }, 
+                "@referredType": {
+                    "type": "string", 
+                    "description": "The actual type of the target instance when needed for disambiguation."
                 }
             }
         }, 
@@ -1192,24 +1276,36 @@
         "Error": {
             "required": [
                 "code", 
-                "message"
+                "reason"
             ], 
             "properties": {
                 "code": {
                     "type": "integer", 
-                    "description": "An integer coding the error type. This is given to caller so he can translate them if required."
+                    "description": "Application related code."
+                }, 
+                "reason": {
+                    "type": "integer", 
+                    "description": "Text that explains the reason for error."
                 }, 
                 "message": {
                     "type": "string", 
-                    "description": "A short localized string that describes the error."
+                    "description": "(optional) Text that provide more details and corrective actions related to the error."
                 }, 
-                "description": {
-                    "type": "string", 
-                    "description": "(optional) A long localized error description if needed. It can contain precise information about which parameter is missing, or what are the identifier acceptable values."
+                "status": {
+                    "type": "integer", 
+                    "description": "(optional) http error code extension like 400-2"
                 }, 
-                "infoURL": {
+                "referenceError": {
                     "type": "string", 
                     "description": "(optional) A URL to online documentation that provides more information about the error."
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "(optional) The class type of a REST resource."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "(optional) A link to the schema describing a REST resource."
                 }
             }
         }
