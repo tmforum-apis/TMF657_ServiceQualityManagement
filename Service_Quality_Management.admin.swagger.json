@@ -211,37 +211,37 @@
                     {
                         "in": "query", 
                         "type": "string", 
-                        "name": "serviceLevelSpecParameter.name", 
+                        "name": "specParameter.name", 
                         "description": "For filtering on the base of 'name' field (equality)"
                     }, 
                     {
                         "in": "query", 
                         "type": "string", 
-                        "name": "serviceLevelSpecParameter.serviceParmCategory", 
+                        "name": "specParameter.serviceParmCategory", 
                         "description": "For filtering on the base of 'serviceParmCategory' field (equality)"
                     }, 
                     {
                         "in": "query", 
                         "type": "string", 
-                        "name": "serviceLevelSpecParameter.serviceParmPerspective", 
+                        "name": "specParameter.serviceParmPerspective", 
                         "description": "For filtering on the base of 'serviceParmPerspective' field (equality)"
                     }, 
                     {
                         "in": "query", 
                         "type": "string", 
-                        "name": "serviceLevelSpecParameter.transformationAlgorithmOfKQI", 
+                        "name": "specParameter.transformationAlgorithmOfKQI", 
                         "description": "For filtering on the base of 'transformationAlgorithmOfKQI' field (equality)"
                     }, 
                     {
                         "in": "query", 
                         "type": "string", 
-                        "name": "serviceLevelSpecParameter.type", 
+                        "name": "specParameter.type", 
                         "description": "For filtering on the base of 'type' field (equality)"
                     }, 
                     {
                         "in": "query", 
                         "type": "string", 
-                        "name": "serviceLevelSpecConsequence.prescribedAction", 
+                        "name": "specConsequence.prescribedAction", 
                         "description": "For filtering on the base of 'prescribedAction' field (equality)"
                     }
                 ], 
@@ -791,6 +791,9 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
+                    "204": {
+                        "description": "Deleted"
+                    }, 
                     "500": {
                         "description": "Internal Server Error", 
                         "schema": {
@@ -852,10 +855,10 @@
                     "$ref": "#/definitions/TimePeriod", 
                     "description": "A valid duration of a thing."
                 }, 
-                "serviceLevelSpecParameter": {
+                "specParameter": {
                     "$ref": "#/definitions/ServiceLevelSpecParameter"
                 }, 
-                "serviceLevelSpecConsequence": {
+                "specConsequence": {
                     "type": "array", 
                     "items": {
                         "$ref": "#/definitions/ServiceLevelSpecConsequence"
@@ -881,7 +884,7 @@
             "required": [
                 "conformanceTarget", 
                 "conformanceComparator", 
-                "serviceLevelSpecParameter"
+                "specParameter"
             ], 
             "properties": {
                 "conformanceComparator": {
@@ -919,10 +922,10 @@
                     "$ref": "#/definitions/TimePeriod", 
                     "description": "A valid duration of a thing."
                 }, 
-                "serviceLevelSpecParameter": {
+                "specParameter": {
                     "$ref": "#/definitions/ServiceLevelSpecParameter"
                 }, 
-                "serviceLevelSpecConsequence": {
+                "specConsequence": {
                     "type": "array", 
                     "items": {
                         "$ref": "#/definitions/ServiceLevelSpecConsequence"
@@ -977,10 +980,10 @@
                     "type": "string", 
                     "description": "A value that specifies the allowable variation of a conformance \nTarget. The data type should be adjusted case by case."
                 }, 
-                "serviceLevelSpecParameter": {
+                "specParameter": {
                     "$ref": "#/definitions/ServiceLevelSpecParameter"
                 }, 
-                "serviceLevelSpecConsequence": {
+                "specConsequence": {
                     "type": "array", 
                     "items": {
                         "$ref": "#/definitions/ServiceLevelSpecConsequence"
@@ -1024,10 +1027,10 @@
                     "$ref": "#/definitions/TimePeriod", 
                     "description": "A valid duration of a thing."
                 }, 
-                "relatedServiceLevelObjective": {
+                "objective": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/RelatedServiceLevelObjectiveRef"
+                        "$ref": "#/definitions/ServiceLevelObjectiveRef"
                     }
                 }, 
                 "@type": {
@@ -1049,7 +1052,7 @@
             "description": "A Service Level Specification represents a pre-defined or negotiated set of Service Level \nObjectives. In addition, certain consequences are associated with not meeting the Service Level \nObjectives. Service Level Agreements are expressed in terms of Service Level Specifications.\nSkipped properties: id,href", 
             "required": [
                 "name", 
-                "relatedServiceLevelObjective"
+                "objective"
             ], 
             "properties": {
                 "description": {
@@ -1064,10 +1067,10 @@
                     "$ref": "#/definitions/TimePeriod", 
                     "description": "A valid duration of a thing."
                 }, 
-                "relatedServiceLevelObjective": {
+                "objective": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/RelatedServiceLevelObjectiveRef"
+                        "$ref": "#/definitions/ServiceLevelObjectiveRef"
                     }
                 }, 
                 "@type": {
@@ -1096,10 +1099,10 @@
                     "type": "string", 
                     "description": "The name of Service Level Specification"
                 }, 
-                "relatedServiceLevelObjective": {
+                "objective": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/RelatedServiceLevelObjectiveRef"
+                        "$ref": "#/definitions/ServiceLevelObjectiveRef"
                     }
                 }, 
                 "@type": {
@@ -1167,7 +1170,7 @@
                 "relatedEntity": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/RelatedEntityRef"
+                        "$ref": "#/definitions/EntityRef"
                     }
                 }, 
                 "@type": {
@@ -1194,11 +1197,11 @@
                 }
             }
         }, 
-        "RelatedEntityRef": {
+        "EntityRef": {
             "type": "object", 
             "description": "The related entity source of a KQI or KPI. A KQI draws its data from a number of sources, \nincluding Key Performance Indicators (KPIs).  A KPI provides a measurement of a specific aspect \nof the performance of a Service (whether it is a network- or a non-network-based Service) or a \ngroup of Services of the same type.", 
             "properties": {
-                "herf": {
+                "href": {
                     "type": "string", 
                     "description": "The hyperlink to access an entity."
                 }, 
@@ -1216,7 +1219,7 @@
                 }
             }
         }, 
-        "RelatedServiceLevelObjectiveRef": {
+        "ServiceLevelObjectiveRef": {
             "type": "object", 
             "description": "A set of Service Level Objectives that are contained in the Service Level Specification.", 
             "required": [
