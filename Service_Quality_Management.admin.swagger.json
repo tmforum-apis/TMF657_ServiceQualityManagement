@@ -1200,6 +1200,10 @@
         "EntityRef": {
             "type": "object", 
             "description": "The related entity source of a KQI or KPI. A KQI draws its data from a number of sources, \nincluding Key Performance Indicators (KPIs).  A KPI provides a measurement of a specific aspect \nof the performance of a Service (whether it is a network- or a non-network-based Service) or a \ngroup of Services of the same type.", 
+            "required": [
+                "id", 
+                "href"
+            ], 
             "properties": {
                 "href": {
                     "type": "string", 
